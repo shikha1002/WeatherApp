@@ -9,7 +9,17 @@ const forecast=(longitude,latitude,callback)=>{
             callback('Unable to find the location',undefined);
         }else{
             const celsiousTemperature=Math.floor((body.currently.temperature-32)* 5/9);
-            callback(undefined,`It is currently ${celsiousTemperature} degresss out.There is ${body.currently.precipProbability} % change of raining`);
+            const celsiousTemperatureLow=Math.floor((body.daily.data[0].temperatureLow-32)* 5/9);
+            const celsiousTemperatureHigh=Math.floor((body.daily.data[0].temperatureHigh-32)* 5/9);
+
+            callback(undefined,`It is currently ${celsiousTemperature} degresss out.
+             There is ${body.currently.precipProbability} % change of raining.
+             \u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020
+             Temperature Low: ${celsiousTemperatureLow} degree
+             \u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020
+             \u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020
+             \u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020\u0020\u00A0\u00A0\u00A0\u0020\u00A0\u00A0\u00A0\u0020
+             Temperature High: ${celsiousTemperatureHigh} degree`);
         }
      })
 };
